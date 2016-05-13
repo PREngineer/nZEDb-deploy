@@ -20,10 +20,10 @@ Second Phase of the deployment.  Occurs after the FIRST reboot.  Execution goes 
 * Create the 'nzedb' user in MySQL and grant it permission
 * Install Nginx & FPM
 * Configuring Nginx Virtual Server Entries
-  ** covers
-  ** admin
-  ** install
-  ** phpmyadmin
+  * covers
+  * admin
+  * install
+  * phpmyadmin
 * Make sure Apache2 is removed
 * Fix PHP.ini files to improve performance
 * Install Media Processors
