@@ -1,0 +1,208 @@
+#!/bin/bash
+# Script 	Name: nZEDb Setup - Part 3
+# Author: 	Jorge Pabon - PREngineer - pianistapr@hotmail.com
+# License: 	Personal Use (1 device)
+# IMPORTANT: RUN THIS SCRIPT LAST!
+# ONLY AFTER SETTING UP NZEDB THROUGH THE 
+# ADMIN WEB PORTAL:
+# http://<YOURIP>/admin/
+# This contains the IRCScraper and ZNC as well
+# as PhpMyAdmin among other things.
+###############################################
+
+# Color definition variables
+YELLOW='\e[33;3m'
+RED='\e[91m'
+BLACK='\033[0m'
+CYAN='\e[96m'
+GREEN='\e[92m'
+
+# Make sure to clear the Terminal
+clear
+
+# Display the Title Information
+echo 
+echo -e $RED
+echo -e "         nZEDb"
+echo -e "╦╔╗╔╔═╗╔╦╗╔═╗╦  ╦  ╔═╗╦═╗"
+echo -e "║║║║╚═╗ ║ ╠═╣║  ║  ║╣ ╠╦╝"
+echo -e "╩╝╚╝╚═╝ ╩ ╩ ╩╩═╝╩═╝╚═╝╩╚═"
+
+echo -e $CYAN
+echo -e "Brought to you by PREngineer"
+echo
+echo -e $GREEN'nZEDb Server Setup - Part 3'$BLACK
+echo 
+
+echo -e $RED'1. This script has been tested on Ubuntu (Server & Desktop).'
+echo -e '2. The author(s) cannot be held accountable for any problems that might occur if you run this script.'
+echo -e '3. Proceed only if you authorize this script to make changes to your system.'$BLACK
+echo
+
+echo -e $YELLOW
+echo -e "---> [Importing Initial PreDB Dump...]"$BLACK
+sudo wget https://www.dropbox.com/s/qkmgbvmdv9a5w8q/predb_dump_08172015.tar.gz
+sudo gunzip predb_dump_08172015.tar.gz
+sudo tar -xvf predb_dump_08172015.tar
+echo
+echo -e $RED"PLEASE BE PATIENT!  THIS   + W I L L +   TAKE A LONG TIME!"$BLACK
+echo
+sudo php /var/www/nzedb/misc/testing/PreDB/dump_predb.php local tmp/predb_dump_08172015.csv
+echo -e $GREEN
+echo -e "DONE!"
+
+echo -e $YELLOW
+echo -e "---> [Importing Daily Dumps...]"$BLACK
+sudo chmod 777 /var/www/nzedb/resources
+sudo chown -R YOUR_USERNAME:www-data /var/www/nzedb/cli
+echo
+echo -e $RED"PLEASE BE PATIENT!  THIS   + M A Y +   TAKE A LONG TIME!"$BLACK
+echo
+sudo php /var/www/nzedb/cli/data/predb_import_daily_batch.php 0 local true
+echo -e $GREEN
+echo -e "DONE!"
+
+echo -e $YELLOW
+echo -e "---> [Install App for PPAs...]"$BLACK
+sudo apt-get install python-software-properties -y
+sudo add-apt-repository ppa:teward/znc
+sudo apt-get update -y > /dev/null
+echo -e $GREEN
+echo -e "DONE!"
+
+echo -e $YELLOW
+echo -e "---> [Installing ZNC...]"$RED
+echo
+echo -e "You will be prompted for these settings."
+echo
+echo -e "------------Global Settings-------------"
+echo -e "Port:         6664"
+echo -e "SSL:          no"
+echo -e "IPV4:         Yes"
+echo -e "----------------------------------------"
+echo 
+echo -e "-------------Admin User Settings--------------"
+echo -e "Username:     Nick1"
+echo -e "Password:     SOMEPASSWORD"
+echo -e "Password:     SOMEPASSWORD"
+echo -e "Nick:         Nick1"
+echo -e "Alt Nick:     Nick2"
+echo -e "Ident:        Nick1"
+echo -e "Real Name:    Nick1"
+echo -e "Bind host:    0.0.0.0"
+echo -e "----------------------------------------------"
+echo -e "Log in here: $BLACKhttp://<YOURIP>:6664$RED"
+echo -e "to make the following changes:"
+echo
+echo -e "chanmodes: +stn"
+echo -e "Load modules:"
+echo -e "   - chansaver"
+echo -e "   - control panel"
+echo -e "   - perform"
+echo -e "   - webadmin"
+echo -e "----------------------------------------------"
+echo
+echo -e $CYAN"Set up a network:	Yes"$RED
+echo
+echo -e "---------------Network Settings---------------"
+echo -e "Name:         synirc"
+echo -e "Server host:  toronto.on.ca.synirc.net"
+echo -e "Server SSL:   no"
+echo -e "Server Port:  6697"
+echo -e "Server Pass:  [ENTER]"
+echo -e "Init, Chann:  #nZEDbPRE"
+echo -e "----------------------------------------------"
+echo -e "Log in here: $BLACKhttp://<YOURIP>:6664$RED"
+echo -e "to make the following changes:"
+echo
+echo -e "Load modules:"
+echo -e "   - chansaver"
+echo -e "   - keepnick"
+echo -e "   - kickrejoin"
+echo -e "   - nickserv"
+echo -e "   - perform"
+echo -e "   - simple_away"
+echo -e "----------------------------------------------"
+echo
+echo -e $CYAN"Launch ZNC now:  Yes"$RED
+echo
+echo -e "-------------Add Servers:-------------"
+echo -e "SERVER 1:     toronto.on.ca.synirc.net"
+echo -e "PASSWORD:     LEAVE BLANK"
+echo -e "PORT:         6697"
+echo -e "SSL:          False"
+echo -e "Channel:      #nZEDbPRE"
+echo -e "--------------------------------------"
+echo -e "SERVER 2:     monster.va.us.synirc.net"
+echo -e "PASSWORD:     LEAVE BLANK"
+echo -e "PORT:         6697"
+echo -e "SSL:          False"
+echo -e "Channel:      #nZEDbPRE"
+echo -e "--------------------------------------"
+echo -e "SERVER 3:     avarice.wa.us.synirc.net"
+echo -e "PASSWORD:     LEAVE BLANK"
+echo -e "PORT:         6697"
+echo -e "SSL:          False"
+echo -e "Channel:      #nZEDbPRE"
+echo -e "--------------------------------------"
+echo -e "Add more servers in case it drops."
+echo
+echo -e "###########################################################"
+echo -e "#I SUGGEST YOU COPY THIS INFORMATION IN YOUR NOTEPAD! E^.^3"
+echo -e "###########################################################"
+echo -e ""$BLACK
+read -p "Press [Enter] to continue..."
+sudo apt-get install znc znc-dbg znc-dev znc-perl znc-python znc-tcl -y > /dev/null
+znc --makeconf
+echo -e $GREEN
+echo -e "DONE!"
+
+echo -e $YELLOW
+echo -e "---> [Running ZNC on startup...]"$BLACK
+(crontab -l 2>/dev/null; echo "*/10 * * * * /usr/local/bin/znc >/dev/null 2>&1") | crontab -
+echo -e $GREEN
+echo -e "DONE!"
+
+echo -e $YELLOW
+echo -e "---> [Setting Up IRC Scraper...]"$BLACK
+echo -e "Fill the next blank screen with:"
+echo -e "--------------------------------------"
+echo -e "username          = NICK1"
+echo -e "SCRAPE_IRC_SERVER = 127.0.0.1"
+echo -e "SCRAPE_IRC_PORT   = 6666"
+echo -e "SCRAPE_IRC_TLS    = false"
+echo -e "define('SCRAPE_IRC_PASSWORD', 'password');"
+echo -e "--------------------------------------"
+echo -e $RED"After this, enable IRCScraper in the Page"
+echo -e "http://IP/admin/tmux-edit.php"$BLACK
+echo -e "--------------------------------------"
+sudo cp /var/www/nzedb/nzedb/config/ircscraper_settings_example.php /var/www/nzedb/nzedb/config/ircscraper_settings.php
+sudo nano /var/www/nzedb/nzedb/config/ircscraper_settings.php
+echo -e $GREEN
+echo -e "DONE!"
+
+echo -e $YELLOW
+echo -e "---> [Installing TMUX...]"$BLACK
+sudo apt-get install -y tmux time python-setuptools python-pip python3-setuptools python3-pip > /dev/null
+sudo easy_install cymysql pynntp socketpool
+sudo pip3 install cymysql pynntp socketpool
+echo -e $GREEN
+echo -e "DONE!"
+
+echo -e $YELLOW
+echo -e "---> [Configuring TMUX To Run On Startup...]"$BLACK
+(crontab -l 2>/dev/null; echo "@reboot /var/www/nzedb/misc/update/nix/tmux/start.php") | crontab -
+echo -e $GREEN
+echo -e "DONE!"
+
+echo -e $YELLOW
+echo -e "---> [Installing PHPMyAdmin...]"$BLACK
+sudo apt-get install -y phpmyadmin
+echo -e $GREEN
+echo -e "DONE!"
+
+echo -e $YELLOW
+echo -e "---> [Tunning MySQL...]"$BLACK
+sudo apt-get install mysqltuner -y
+echo -e $GREEN
+echo -e "DONE!"$BLACK
