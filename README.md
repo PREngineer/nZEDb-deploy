@@ -48,3 +48,11 @@ Final Phase of the deployment.  Occurs after the SECOND reboot.  Execution goes 
 * Secure & tune MySQL
 
 Hope it helps!
+
+# IMPORTANT!
+
+Inside the script you have to change the values that say:
+
+YOUR_USERNAME  <--- Make it your Ubuntu Username
+
+YOUR_PASSWORD  <--- Make it your selected Password
