@@ -1052,7 +1052,7 @@ cli_server.color = On
 [Date]
 ; Defines the default timezone used by the date functions
 ; http://php.net/date.timezone
-date.timezone = America\New_York
+date.timezone = America/New_York
 
 ; http://php.net/date.default-latitude
 ;date.default_latitude = 31.7667
@@ -2985,7 +2985,7 @@ cli_server.color = On
 [Date]
 ; Defines the default timezone used by the date functions
 ; http://php.net/date.timezone
-date.timezone = America\New_York
+date.timezone = America/New_York
 
 ; http://php.net/date.default-latitude
 ;date.default_latitude = 31.7667
