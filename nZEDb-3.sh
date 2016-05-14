@@ -162,7 +162,7 @@ echo -e "DONE!"
 
 echo -e $YELLOW
 echo -e "---> [Running ZNC on startup...]"$BLACK
-sudo (crontab -l 2>/dev/null; echo "@reboot /bin/sleep 10; /usr/local/bin/znc >/dev/null 2>&1") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot /bin/sleep 10; /usr/local/bin/znc >/dev/null 2>&1") | crontab -
 echo -e $GREEN
 echo -e "DONE!"
 
@@ -194,7 +194,7 @@ echo -e "DONE!"
 
 echo -e $YELLOW
 echo -e "---> [Configuring TMUX To Run On Startup...]"$BLACK
-sudo (crontab -l 2>/dev/null; echo "@reboot /bin/sleep 10; /usr/bin/php /var/www/nzedb/misc/update/nix/tmux/start.php") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot /bin/sleep 10; /usr/bin/php /var/www/nzedb/misc/update/nix/tmux/start.php") | crontab -
 echo -e $GREEN
 echo -e "DONE!"
 
