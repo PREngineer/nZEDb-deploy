@@ -47,7 +47,7 @@ sudo tar -xvf predb_dump_08172015.tar
 echo
 echo -e $RED"PLEASE BE PATIENT!  THIS   + W I L L +   TAKE A LONG TIME!"$BLACK
 echo
-sudo php /var/www/nzedb/misc/testing/PreDB/dump_predb.php local tmp/predb_dump_08172015.csv
+sudo php /var/www/nzedb/misc/testing/PreDB/dump_predb.php remote tmp/predb_dump_08172015.csv
 echo -e $GREEN
 echo -e "DONE!"
 
@@ -58,7 +58,7 @@ sudo chown -R YOUR_USERNAME:www-data /var/www/nzedb/cli
 echo
 echo -e $RED"PLEASE BE PATIENT!  THIS   + M A Y +   TAKE A LONG TIME!"$BLACK
 echo
-sudo php /var/www/nzedb/cli/data/predb_import_daily_batch.php 0 local true
+sudo php /var/www/nzedb/cli/data/predb_import_daily_batch.php 0 remote true
 echo -e $GREEN
 echo -e "DONE!"
 
