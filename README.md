@@ -42,7 +42,7 @@ Final Phase of the deployment.  Occurs after the SECOND reboot.  Execution goes 
 * Import additional Daily Dumps into the Database
 * Install PPA for ZNC
 * Set up ZNC to auto-start
-* Install TMUX to automate binarie search & release creation
+* Install TMUX to automate binaries search & release creation
 * Set up TMUX to run on startup
 * Install PHPMyAdmin
 * Secure & tune MySQL
