@@ -1,5 +1,5 @@
 # nZEDb-deploy
-A collection of scripts to automate and simplify the deployment of a nZEDb Usenet Indexer as per the new format of their GitHub repository.
+A collection of scripts to automate and simplify the deployment of a nZEDb Usenet Indexer using the new format of their GitHub repository.
 
 ## nZEDb-1.sh
 
