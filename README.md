@@ -1,3 +1,11 @@
+# nZEDb Tested/Recommended Configuration
+
+These scripts can be used to deploy nZEDb to a Virtual Machine or Hard Machine with the following specs:
+
+* Operating System: Ubuntu 14.04 LTS 64-bit [Other Ubuntu/Debian possibly works but not tested]
+* CPU: 4
+* RAM: 8 GB
+
 # nZEDb-deploy
 A collection of scripts to automate and simplify the deployment of a nZEDb Usenet Indexer using the new format of their GitHub repository.
 
