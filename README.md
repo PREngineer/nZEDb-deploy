@@ -1,3 +1,9 @@
+# Please Support This Project!
+
+This project is being developed during my spare time.  I find it to be very useful for people that are starting to use nZEDb and have little to no previous experience with Ubuntu/Debian Servers.  I would appreciate a donation if you found it useful.
+
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNQLLY89JSPBN)
+
 # nZEDb Tested/Recommended Configuration
 
 These scripts can be used to deploy nZEDb to a Virtual Machine or Hard Machine with the following specs:
