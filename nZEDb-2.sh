@@ -4078,7 +4078,7 @@ echo -e "DONE!"
 
 echo -e $YELLOW
 echo -e "---> [Installing MemCache & APC...]"$BLACK
-sudo apt-get install memcached php5-memcache -y > /dev/null
+sudo apt-get install memcached php5-memcached -y > /dev/null
 sudo apt-get install php-apc -y > /dev/null
 sudo service apache2 restart
 sudo cp /usr/share/doc/php5-apcu/apc.php /var/www/nzedb/www/admin
