@@ -4,6 +4,9 @@ This project is being developed during my spare time.  I find it to be very usef
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=53CD2WNX3698E&lc=US&item_name=PREngineer&item_number=nZEDb%2ddeploy&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
+
+
+
 # nZEDb Tested/Recommended Configuration
 
 These scripts can be used to deploy nZEDb to a Virtual Machine or Hard Machine with the following specs:
@@ -11,6 +14,9 @@ These scripts can be used to deploy nZEDb to a Virtual Machine or Hard Machine w
 * Operating System: Ubuntu 14.04 LTS 64-bit [Other Ubuntu/Debian possibly works but not tested]
 * CPU: 4
 * RAM: 8 GB
+
+
+
 
 # nZEDb-deploy
 A collection of scripts to automate and simplify the deployment of a nZEDb Usenet Indexer using the new format of their GitHub repository.
