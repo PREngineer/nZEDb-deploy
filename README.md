@@ -2,7 +2,7 @@
 
 This project is being developed during my spare time.  I find it to be very useful for people that are starting to use nZEDb and have little to no previous experience with Ubuntu/Debian Servers.  I would appreciate a donation if you found it useful.
 
-[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNQLLY89JSPBN)
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=53CD2WNX3698E&lc=US&item_name=PREngineer&item_number=nZEDb%2ddeploy&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
 # nZEDb Tested/Recommended Configuration
 
