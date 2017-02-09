@@ -56,3 +56,14 @@ Inside the script you have to change the values that say:
 YOUR_USERNAME  <--- Make it your Ubuntu Username
 
 YOUR_PASSWORD  <--- Make it your selected Password
+
+# TO DOs (After installing)
+
+* To enable Memcache:
+```
+cp /var/www/nzedb/nzedb/config/settings.example.php  /var/www/nzedb/nzedb/config/settings.php
+sudo nano /var/www/nzedb/nzedb/config/settings.php
+```
+Change the Cache Type to:
+
+> define('nZEDb_CACHE_TYPE', 1);
