@@ -40,7 +40,7 @@ echo
 
 echo -e $YELLOW
 echo -e "---> [Installing PHP & Extensions...]"$BLACK
-sudo apt-get install -y php5 php5-dev php-pear php5-gd php5-mysqlnd php5-curl > /dev/null
+sudo apt-get install -y php7.2 php7.2-pear php7.2-gd php-mysqlnd php7.2-curl > /dev/null
 echo -e $GREEN
 echo -e "DONE!"
 
@@ -48,7 +48,7 @@ echo -e $YELLOW
 echo -e "---> [Installing MySQL...]"$BLACK
 sudo mkdir /var/www
 sudo chmod -R 777 /var/www
-sudo apt-get install mysql-server-5.6 mysql-client-5.6 -y
+sudo apt-get install mysql-server mysql-client -y
 echo -e $GREEN
 echo -e "DONE!"
 
@@ -61,7 +61,7 @@ Q1="GRANT ALL ON *.* TO 'nzedb'@'%' IDENTIFIED BY 'YOUR_PASSWORD';"
 Q2="GRANT FILE ON *.* TO 'nzedb'@'%' IDENTIFIED BY 'YOUR_PASSWORD';"
 Q3="FLUSH PRIVILEGES;"
 SQL="${Q0}${Q1}${Q2}${Q3}"
-$MYSQL -uroot -p -e "$SQL"
+$MYSQL -u root -p -e "$SQL"
 echo
 echo -e "-------------------------------------------------"
 echo -e "# WHEN FILLING THE DATABASE INFORMATION IN NZEDB#"
@@ -74,7 +74,7 @@ echo -e "DONE!"
 echo -e $YELLOW
 echo -e "---> [Installing Nginx, PHP5 & PHP-FPM...]"$BLACK
 sudo apt-get install nginx -y > /dev/null
-sudo apt-get install php5 php5-fpm -y > /dev/null
+sudo apt-get install php7.2 php7.2-fpm -y > /dev/null
 echo -e $GREEN
 echo -e "DONE!"
 
@@ -126,7 +126,7 @@ sudo echo 'server {
 
         # Uncomment the following line and comment the .sock line if you want to use TCP.
         #fastcgi_pass 127.0.0.1:9000;
-        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_pass unix:/var/run/php7.2-fpm.sock;
 
         # The next two lines should go in your fastcgi_params
         fastcgi_index index.php;
@@ -138,7 +138,7 @@ sudo echo 'server {
         location ~ ^/phpmyadmin/(.+\.php)$ {
             try_files $uri =404;
             root /usr/share/;
-            fastcgi_pass unix:/var/run/php5-fpm.sock;
+            fastcgi_pass unix:/var/run/php7.2-fpm.sock;
             fastcgi_index index.php;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             include /etc/nginx/fastcgi_params;
@@ -156,8 +156,8 @@ sudo mkdir -p /var/log/nginx
 sudo chmod 755 /var/log/nginx
 sudo unlink /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/nZEDb /etc/nginx/sites-enabled/nZEDb
-sudo service php5-fpm restart
-sudo service php5 restart
+sudo service php7.2-fpm restart
+sudo service php7.2 restart
 sudo service nginx restart
 sudo usermod -aG www-data YOUR_USERNAME
 echo -e $GREEN
@@ -4078,10 +4078,10 @@ echo -e "DONE!"
 
 echo -e $YELLOW
 echo -e "---> [Installing MemCache & APC...]"$BLACK
-sudo apt-get install memcached php5-memcached -y > /dev/null
-sudo apt-get install php-apc -y > /dev/null
+sudo apt-get install memcached php7.2-memcached -y > /dev/null
+sudo apt-get install php7.2-apc -y > /dev/null
 sudo service apache2 restart
-sudo cp /usr/share/doc/php5-apcu/apc.php /var/www/nzedb/www/admin
+sudo cp /usr/share/doc/php7.2-apcu/apc.php /var/www/nzedb/www/admin
 sudo service nginx restart
 sudo chmod o+r /var/lib/php5
 echo -e $GREEN
